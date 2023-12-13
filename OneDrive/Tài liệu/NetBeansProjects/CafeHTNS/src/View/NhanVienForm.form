@@ -128,8 +128,8 @@
                               <Component id="btnsanpham" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                               <Component id="btnhoadon" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                               <Component id="bngiamgia" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                              <Component id="btndangxuat" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                               <Component id="btnTaiKHoan" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                              <Component id="btndangxuat" alignment="1" min="-2" pref="131" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -348,8 +348,9 @@
                           <Component id="bngiamgia" min="-2" pref="44" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnTaiKHoan" min="-2" pref="44" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           <Component id="btndangxuat" min="-2" pref="44" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

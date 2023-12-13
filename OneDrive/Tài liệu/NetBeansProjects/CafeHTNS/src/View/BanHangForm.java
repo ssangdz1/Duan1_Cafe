@@ -1596,6 +1596,7 @@ public class BanHangForm extends javax.swing.JFrame {
         lblTongTIen.setText("TỔNG CỘNG :");
 
         lblTongcong.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTongcong.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTongcong.setText("0.0");
 
         javax.swing.GroupLayout HoaDonLayout = new javax.swing.GroupLayout(HoaDon);
@@ -1603,9 +1604,9 @@ public class BanHangForm extends javax.swing.JFrame {
         HoaDonLayout.setHorizontalGroup(
             HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HoaDonLayout.createSequentialGroup()
-                .addGap(168, 168, 168)
+                .addGap(135, 135, 135)
                 .addComponent(lblTongTIen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblTongcong)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(HoaDonLayout.createSequentialGroup()
@@ -1741,7 +1742,7 @@ public class BanHangForm extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(HoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(MenuLayout.createSequentialGroup()
