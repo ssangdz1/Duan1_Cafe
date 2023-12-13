@@ -1,0 +1,90 @@
+
+
+Username: quang
+
+Password: 123
+
+Role: user
+
+---------------------------
+
+Username: quang
+
+Password: 123
+
+Role: user
+
+---------------------------
+
+Username: nga
+
+Password: 1234
+
+Role: admin
+
+---------------------------
+
+Username: quang
+
+Password: 123
+
+Role: user
+
+---------------------------
+
+Username: nga
+
+Password: 1234
+
+Role: admin
+
+---------------------------
+
+Username: nga
+
+Password: 1234
+
+Role: admin
+
+---------------------------
+
+Username: nga
+
+Password: 1234
+
+Role: admin
+
+---------------------------
+
+Username: hieu
+
+Password: 123
+
+Role: admin
+
+---------------------------
+
+Username: quang
+
+Password: 123
+
+Role: user
+
+---------------------------
+
+Username: quang
+
+Password: 123
+
+Role: user
+
+---------------------------
+
+Username: nga
+
+Password: 1234
+
+Role: admin
+
+---------------------------
+
