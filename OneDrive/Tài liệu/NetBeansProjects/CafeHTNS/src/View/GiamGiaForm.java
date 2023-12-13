@@ -7,7 +7,10 @@ package View;
 import Service.GiamGiaService;
 import Model.GiamGia;
 import UTILS.Auth;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.formula.ptg.TblPtg;
@@ -28,6 +31,33 @@ public class GiamGiaForm extends javax.swing.JFrame {
         setTitle("Phần mềm quản lý Cafe HTNS - Giảm Giá");
         model = (DefaultTableModel) TblGG.getModel();
         fillToTable();
+        setTime();
+    }
+    
+    public void setTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                    }
+                    SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm:ss a");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Calendar cal = Calendar.getInstance();
+                    // Đặt múi giờ (timezone) nếu cần
+                    // Ví dụ: Set múi giờ cho Việt Nam (GMT+7)
+                    TimeZone timeZone = TimeZone.getTimeZone("Asia/Ho_Chi_Minh");
+                    cal.setTimeZone(timeZone);
+                    // Lấy ngày giờ hiện tại
+                    String time = timeFormat.format(cal.getTime());
+                    String day = dateFormat.format(cal.getTime());
+                    // Hiển thị thời gian và ngày trên giao diện người dùng
+                    lblDongHo.setText(time);
+                }
+            }
+        }).start();
     }
     private void sanpham(int index) {
         if (Auth.isLogin()) {

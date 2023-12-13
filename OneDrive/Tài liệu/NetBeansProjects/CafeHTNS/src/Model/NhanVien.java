@@ -9,33 +9,26 @@ package Model;
  * @author sang
  */
 public class NhanVien {
-    private int id;
+
     private String maNV;
     private String diaChi;
-    private String male;
+    private boolean male;
     private String sdt;
     private String name;
     private String chucVu;
 
-    public NhanVien() {
-    }
-
-    public NhanVien( String maNV, String name,String diaChi , String male, String sdt, String chucVu) {
+    public NhanVien( String maNV, String diaChi, boolean male, String sdt, String name, String chucVu) {
         this.maNV = maNV;
-        this.name = name;
         this.diaChi = diaChi;
         this.male = male;
         this.sdt = sdt;
+        this.name = name;
         this.chucVu = chucVu;
     }
 
-    public int getId() {
-        return id;
+    public NhanVien() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getMaNV() {
         return maNV;
@@ -53,13 +46,14 @@ public class NhanVien {
         this.diaChi = diaChi;
     }
 
-    public String getMale() {
+    public boolean isMale() {
         return male;
     }
 
-    public void setMale(String male) {
+    public void setMale(boolean male) {
         this.male = male;
     }
+
 
     public String getSdt() {
         return sdt;
@@ -85,7 +79,9 @@ public class NhanVien {
         this.chucVu = chucVu;
     }
     
-    public  Object[] toDataRow(){
-      return new Object[]{this.maNV,this.name,this.diaChi,this.male, this.sdt,this.chucVu};
+    
+
+    public Object[] toDataRow() {
+        return new Object[]{this.maNV, this.name, this.diaChi, this.male, this.sdt, this.chucVu};
     }
 }

@@ -32,10 +32,9 @@ public class NhanVienService {
             while(rs.next()){
                 NhanVien nv = new NhanVien();
                 nv.setMaNV(rs.getString("MaNV"));
-                nv.setId(rs.getInt("ID"));
                 nv.setName(rs.getString("TenNV"));
                 nv.setDiaChi(rs.getString("DiaChi"));
-                nv.setMale(rs.getString("GioiTinh"));
+                nv.setMale(rs.getBoolean("GioiTinh"));
                 nv.setSdt(rs.getString("SDT"));
                 nv.setChucVu(rs.getString("ChucVu"));
                 list.add(nv);
@@ -55,7 +54,7 @@ public class NhanVienService {
             ps.setObject(1, b.getMaNV());
             ps.setObject(2, b.getName());
             ps.setObject(3, b.getDiaChi());
-            ps.setObject(4, b.getMale());
+            ps.setObject(4, b.isMale());
             ps.setObject(5, b.getSdt());
             ps.setObject(6, b.getChucVu());
             return ps.executeUpdate();
@@ -74,7 +73,7 @@ public class NhanVienService {
             ps.setObject(1, nv.getMaNV());
             ps.setObject(2, nv.getName());
             ps.setObject(3, nv.getDiaChi());
-            ps.setObject(4, nv.getMale());
+            ps.setObject(4, nv.isMale());
             ps.setObject(5, nv.getSdt());
             ps.setObject(6, nv.getChucVu());
             return ps.executeUpdate();
@@ -94,7 +93,7 @@ public class NhanVienService {
             ps.setObject(6, nv.getMaNV());
             ps.setObject(1, nv.getName());
             ps.setObject(2, nv.getDiaChi());
-            ps.setObject(3, nv.getMale());
+            ps.setObject(3, nv.isMale());
             ps.setObject(4, nv.getSdt());
             ps.setObject(5, nv.getChucVu());
             row = ps.executeUpdate();

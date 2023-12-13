@@ -5,6 +5,10 @@
 package View;
 
 import UTILS.Auth;
+import com.itextpdf.text.log.Logger;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +24,34 @@ public class HTNSJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý Cafe HTNS - Trang Chủ");
+        setTime();
+    }
+
+    public void setTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        
+                    }
+                    SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm:ss a");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Calendar cal = Calendar.getInstance();
+                    // Đặt múi giờ (timezone) nếu cần
+                    // Ví dụ: Set múi giờ cho Việt Nam (GMT+7)
+                    TimeZone timeZone = TimeZone.getTimeZone("Asia/Ho_Chi_Minh");
+                    cal.setTimeZone(timeZone);
+                    // Lấy ngày giờ hiện tại
+                    String time = timeFormat.format(cal.getTime());
+                    String day = dateFormat.format(cal.getTime());
+                    // Hiển thị thời gian và ngày trên giao diện người dùng
+                    lblDongHo.setText(time);
+                }
+            }
+        }).start();
     }
 
     /**
@@ -431,6 +463,7 @@ public class HTNSJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
         }
     }
+
     private void banhang(int index) {
         if (Auth.isLogin()) {
             if (index == 1 && !Auth.isManager()) {

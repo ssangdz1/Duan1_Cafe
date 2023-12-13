@@ -63,7 +63,7 @@ public class HoaDonService {
     public ArrayList<HoaDon> timTheoMAHD(String mahd) {
         ArrayList<HoaDon> list = new ArrayList<>();
         try {
-            String sql = "select MaHD,TongTien,NgayXuatHD\n"
+            String sql = "select MaHD,MaNV,TongTien,NgayXuatHD\n"
                     + "from HoaDon where MaHD like ?";
             Connection con = JDBCHelper.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -72,7 +72,7 @@ public class HoaDonService {
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString("MaHD"));
-                hd.setMaNV(Auth.user.getMaTK());
+                hd.setMaNV(rs.getString("MaNV"));
                 hd.setTongtien(rs.getDouble("Tongtien"));
                 hd.setNgayxuatxu(rs.getDate("NgayxuatHD"));
                 list.add(hd);
@@ -160,22 +160,17 @@ public class HoaDonService {
         return success;
     }
 
-//    public Integer deleteHoaDon(String mahd) {
-//        Integer row = null;
-//        Connection con = JDBCHelper.getConnection();
-//        String sql = "delete\n"
-//                + "from HoaDonChiTiet\n"
-//                + "where MaHD = ?"
-//                + "delete\n"
-//                + "from HoaDon\n"
-//                + "where MaHD = ?";
-//        try {
-//            PreparedStatement pstm = con.prepareStatement(sql);
-//            pstm.setString(1, mahd);
-//            row = pstm.executeUpdate();
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//        return row;
-//    }
+    public Integer deleteHoaDon(String mahd) {
+        Integer row = null;
+        Connection con = JDBCHelper.getConnection();
+        String sql = "delete from hoadon where mahd = ?";
+        try {
+            PreparedStatement pstm = con.prepareStatement(sql);
+            pstm.setString(1, mahd);
+            row = pstm.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return row;
+    }
 }

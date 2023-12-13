@@ -97,7 +97,7 @@ public class HoaDonCTService {
     public ArrayList<HoaDon> timTheoMAHD2(String mahd) {
         ArrayList<HoaDon> list = new ArrayList<>();
         try {
-            String sql = "select MaHDCT,HoaDonChiTiet.MaHD,HoaDon.MaNV,SanPham.TenSP, HoaDonChiTiet.SoLuong,Gia,HoaDon.TongTien,HoaDon.NgayXuatHD\n"
+            String sql = "select MaHDCT,HoaDonChiTiet.MaHD,HoaDonChiTiet.MaSP,SanPham.TenSP, HoaDonChiTiet.SoLuong,Gia,HoaDon.TongTien,HoaDon.NgayXuatHD\n"
                     + "               from HoaDonChiTiet\n"
                     + "                    join HoaDon on HoaDonChiTiet.MaHD = HoaDon.MaHD\n"
                     + "                   join SanPham on HoaDonChiTiet.MaSP = SanPham.MaSP\n"
@@ -110,7 +110,7 @@ public class HoaDonCTService {
                 HoaDon hd = new HoaDon();
                 hd.setMaHDCT(rs.getString("MaHDCT"));
                 hd.setMaHD(rs.getString("MaHD"));
-                hd.setMaNV(rs.getString("MaNV"));
+                hd.setMaSP(rs.getString("MaSP"));
                 hd.setTenSp(rs.getString("TenSP"));
                 hd.setSoluong(rs.getInt("SoLuong"));
                 hd.setGia(rs.getDouble("Gia"));
@@ -147,7 +147,7 @@ public class HoaDonCTService {
         }
         return list;
     }
-    
+
     public Integer deleteByMaSP(String masp) {
         Integer row = null;
         Connection con = JDBCHelper.getConnection();
@@ -163,7 +163,7 @@ public class HoaDonCTService {
         }
         return row;
     }
-    
+
     public ArrayList<HoaDon> getAllSanPhamCT() {
         ArrayList<HoaDon> list = new ArrayList<>();
         Connection con = JDBCHelper.getConnection();

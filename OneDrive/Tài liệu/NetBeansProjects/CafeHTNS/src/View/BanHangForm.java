@@ -82,6 +82,7 @@ public class BanHangForm extends javax.swing.JFrame {
         lblNgayxuatHD.setText("");
         btnTaoHoaDon.setEnabled(true);
         btnThanhToan.setEnabled(false);
+        btnIn.setEnabled(false);
         jSpinner1.setValue(1);
         jSpinner2.setValue(1);
         jSpinner3.setValue(1);
@@ -1977,6 +1978,7 @@ public class BanHangForm extends javax.swing.JFrame {
                     );
                     btnIn.setEnabled(true);
                     btnTaoHoaDon.setEnabled(false);
+                    btnThanhToan.setEnabled(false);
                 } else {
                     JOptionPane.showMessageDialog(this, "Thanh toán thất bại");
                 }
@@ -2005,7 +2007,7 @@ public class BanHangForm extends javax.swing.JFrame {
     private void btnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInActionPerformed
         String path = "";
         arr = hdcts.timTheoMAHD2(txtMaHd.getText());
-        JFileChooser j = new JFileChooser("\\Users\\sang\\OneDrive\\Tài liệu\\NetBeansProjects\\HTNS");
+        JFileChooser j = new JFileChooser("\\Users\\sang\\OneDrive\\Tài liệu\\NetBeansProjects\\CafeHTNS\\Bill");
         j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int x = j.showSaveDialog(this);
         if (x == JFileChooser.APPROVE_OPTION) {
@@ -2013,7 +2015,7 @@ public class BanHangForm extends javax.swing.JFrame {
         }
         Document doc = new Document();
         try {
-            String fileName = "\\Bill" + stt + ".pdf";
+            String fileName ="\\Bill"+ stt + ".pdf";
             PdfWriter.getInstance(doc, new FileOutputStream(path + fileName));
             doc.open();
             Paragraph ngayXuatHDPara = new Paragraph("************************************************Cafe HTNS***********************************************\n"
@@ -2048,9 +2050,6 @@ public class BanHangForm extends javax.swing.JFrame {
             doc.add(tongTienPara);
             JOptionPane.showMessageDialog(this, "Xuất PDF thành công");
             stt++;
-            btnThanhToan.setEnabled(false);
-            btnIn.setEnabled(false);
-            btnTaoHoaDon.setEnabled(true);
             clearForm();
         } catch (Exception e) {
             e.printStackTrace();
@@ -2159,8 +2158,8 @@ public class BanHangForm extends javax.swing.JFrame {
             if (hds.addHoaDon(hd)) {
                 JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công");
                 loadData();
-                tblHoaDon.setRowSelectionInterval(0, 0);
                 btnTaoHoaDon.setEnabled(false);
+                btnIn.setEnabled(false);
                 btnThanhToan.setEnabled(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Tạo hóa đơn thất bại");
