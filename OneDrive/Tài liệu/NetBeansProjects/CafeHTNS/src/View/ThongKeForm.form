@@ -466,9 +466,8 @@
             <Component class="javax.swing.JTable" name="tblTK">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="0">
-                    <Column editable="true" title="MaTK" type="java.lang.Object"/>
-                    <Column editable="true" title="MaHD" type="java.lang.Object"/>
+                  <Table columnCount="3" rowCount="0">
+                    <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng h&#xf3;a &#x111;&#x1a1;n" type="java.lang.Object"/>
                     <Column editable="true" title="Th&#x1ed1;ng K&#xea; Theo Ng&#xe0;y" type="java.lang.Object"/>
                     <Column editable="true" title="Doanh Thu" type="java.lang.Object"/>
                   </Table>

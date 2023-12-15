@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -14,7 +14,9 @@ import javax.swing.Timer;
  * @author sang
  */
 public class Main extends javax.swing.JFrame {
+
     Timer t;
+
     /**
      * Creates new form Main
      */
@@ -33,7 +35,7 @@ public class Main extends javax.swing.JFrame {
                     dispose();
                     setLocationRelativeTo(null);
                 }
-            }           
+            }
         });
         t.start();
     }
@@ -58,8 +60,8 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ICON/LogoHTNS.png"))); // NOI18N
 
-        pgTienDo.setBackground(new java.awt.Color(255, 0, 0));
-        pgTienDo.setForeground(new java.awt.Color(255, 0, 0));
+        pgTienDo.setBackground(new java.awt.Color(255, 255, 51));
+        pgTienDo.setForeground(new java.awt.Color(255, 0, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

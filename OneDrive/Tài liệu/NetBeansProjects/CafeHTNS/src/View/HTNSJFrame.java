@@ -326,7 +326,8 @@ public class HTNSJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTaiKHoanActionPerformed
 
     private void btndangxuat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndangxuat1ActionPerformed
-        // TODO add your handling code here:
+        new DangNhapFrom().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btndangxuat1ActionPerformed
 
     /**

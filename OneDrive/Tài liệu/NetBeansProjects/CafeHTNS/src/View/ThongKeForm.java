@@ -4,10 +4,12 @@
  */
 package View;
 
+import Model.HoaDon;
 import Service.ThongKeService;
 import Model.ThongKe;
 import UTILS.Auth;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
@@ -22,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ThongKeForm extends javax.swing.JFrame {
 
+    ArrayList<ThongKe> list;
     DefaultTableModel dtm = new DefaultTableModel();
     ThongKeService tks = new ThongKeService();
     int index = 0;
@@ -33,8 +36,8 @@ public class ThongKeForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Phần mềm quản lý Cafe HTNS - Thống Kê");
-        this.fillTable(tks.getAll());
         setTime();
+        fillTable();
     }
     
     public void setTime() {
@@ -64,11 +67,16 @@ public class ThongKeForm extends javax.swing.JFrame {
         }).start();
     }
 
-    void fillTable(List<ThongKe> list) {
+    void fillTable() {
         dtm = (DefaultTableModel) tblTK.getModel();
         dtm.setRowCount(0);
-        for (ThongKe thongKe : list) {
-            dtm.addRow(thongKe.toDataRow());
+        list = (ArrayList<ThongKe>) tks.getAll();
+        for (ThongKe tk : list) {
+            dtm.addRow(new Object[]{
+                tk.getMaHD(),
+                tk.getNgayTk(),
+                tk.getLuong()
+            });
         }
     }
 
@@ -270,7 +278,7 @@ public class ThongKeForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "MaTK", "MaHD", "Thống Kê Theo Ngày", "Doanh Thu"
+                "Số lượng hóa đơn", "Thống Kê Theo Ngày", "Doanh Thu"
             }
         ));
         tblTK.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -520,7 +528,7 @@ public class ThongKeForm extends javax.swing.JFrame {
 
     private void btnbanhang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbanhang1ActionPerformed
         // TODO add your handling code here:
-        banhang(1);
+        new BanHangForm().setVisible(true);
     }//GEN-LAST:event_btnbanhang1ActionPerformed
 
     private void btnsanphamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsanphamActionPerformed

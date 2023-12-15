@@ -42,6 +42,7 @@ public class HoaDonService {
         }
         return list;
     }
+
     public boolean updateHoaDon(HoaDon hd) {
         boolean success = false;
         Connection con = JDBCHelper.getConnection();
@@ -63,7 +64,7 @@ public class HoaDonService {
     public ArrayList<HoaDon> timTheoMAHD(String mahd) {
         ArrayList<HoaDon> list = new ArrayList<>();
         try {
-            String sql = "select MaHD,MaNV,TongTien,NgayXuatHD\n"
+            String sql = "select MaHD,HoaDon.MaNV,TongTien,NgayXuatHD\n"
                     + "from HoaDon where MaHD like ?";
             Connection con = JDBCHelper.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
@@ -94,6 +95,7 @@ public class HoaDonService {
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString("MaHD"));
+                hd.setMaNV(rs.getString("MaNV"));
                 hd.setTongtien(rs.getDouble("Tongtien"));
                 hd.setNgayxuatxu(rs.getDate("NgayxuatHD"));
                 list.add(hd);
@@ -125,6 +127,7 @@ public class HoaDonService {
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString("MaHD"));
+                hd.setMaNV(rs.getString("MaNV"));
                 hd.setTongtien(rs.getDouble("Tongtien"));
                 hd.setNgayxuatxu(rs.getDate("NgayxuatHD"));
                 list.add(hd);

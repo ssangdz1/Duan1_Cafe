@@ -51,7 +51,7 @@ public class HoaDonCTService {
 //                list.add(sp);
             }
         } catch (Exception e) {
-            System.out.println(e);
+//            System.out.println(e);
         }
         return list;
     }
@@ -73,7 +73,7 @@ public class HoaDonCTService {
             success = rowsAffected > 0;
 
         } catch (Exception e) {
-            System.out.println(e);
+//            System.out.println(e);
         }
         return success;
     }
@@ -125,28 +125,28 @@ public class HoaDonCTService {
         return list;
     }
 
-    public ArrayList<HoaDonCT> selectByMaHD(String manh) {
-        ArrayList<HoaDonCT> list = new ArrayList<>();
-        try {
-            String sql = "select * from hoadonchitiet where mahd = ?";
-            Connection con = JDBCHelper.getConnection();
-            PreparedStatement pstm = con.prepareStatement(sql);
-            ResultSet rs = pstm.executeQuery();
-            while (rs.next()) {
-                HoaDonCT hdct = new HoaDonCT();
-                hdct.setMaHDCT(rs.getString("mahdct"));
-                hdct.setMaHD(rs.getString("mahd"));
-                hdct.setMaNV(rs.getString("manv"));
-                hdct.setTenSP(rs.getString("tensp"));
-                hdct.setSoluong(rs.getInt("soluong"));
-                hdct.setGia(rs.getDouble("Gia"));
-                list.add(hdct);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
+//    public ArrayList<HoaDonCT> selectByMaHD(String manh) {
+//        ArrayList<HoaDonCT> list = new ArrayList<>();
+//        try {
+//            String sql = "select * from hoadonchitiet where mahd = ?";
+//            Connection con = JDBCHelper.getConnection();
+//            PreparedStatement pstm = con.prepareStatement(sql);
+//            ResultSet rs = pstm.executeQuery();
+//            while (rs.next()) {
+//                HoaDonCT hdct = new HoaDonCT();
+//                hdct.setMaHDCT(rs.getString("mahdct"));
+//                hdct.setMaHD(rs.getString("mahd"));
+//                hdct.setMaNV(rs.getString("manv"));
+//                hdct.setTenSP(rs.getString("tensp"));
+//                hdct.setSoluong(rs.getInt("soluong"));
+//                hdct.setGia(rs.getDouble("Gia"));
+//                list.add(hdct);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return list;
+//    }
 
     public Integer deleteByMaSP(String masp) {
         Integer row = null;

@@ -466,7 +466,10 @@ public class TaiKhoanForm extends javax.swing.JFrame {
 
     private void tblTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTaiKhoanMouseClicked
         // TODO add your handling code here:
-        showDetail();
+        try {
+            showDetail();
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_tblTaiKhoanMouseClicked
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -489,7 +492,7 @@ public class TaiKhoanForm extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        if (check()) {
+        if(check1()){
             int index = tblTaiKhoan.getSelectedRow();
             int id = list.get(index).getId();
             try {
@@ -503,11 +506,10 @@ public class TaiKhoanForm extends javax.swing.JFrame {
                 }
 
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên cần sửa");
             }
         }
-
-
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -797,6 +799,22 @@ public class TaiKhoanForm extends javax.swing.JFrame {
                 return false; // Không cho phép thêm mới
             }
         }
+        if (txtPass.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu");
+            txtPass.requestFocus();
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean check1() {
+        if (txttk.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng điền tài khoản");
+            txttk.requestFocus();
+            return false;
+        }
+        list = tks.getAllTK();
+        
         if (txtPass.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu");
             txtPass.requestFocus();

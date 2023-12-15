@@ -58,17 +58,16 @@ public class TaiKhoanService {
         Integer row = null;
         Connection con = JDBCHelper.getConnection();
         String sql = "update TaiKhoan\n"
-                + "set TaiKhoan = ?,Pass = ?,VaiTro = ?\n"
-                + "where ID = ?";
+                + "set Pass = ?,VaiTro = ?\n"
+                + "where taikhoan = ?";
         try {
             PreparedStatement pstm = con.prepareStatement(sql);
-            pstm.setString(1, tk.getMaTK());
-            pstm.setString(2, tk.getPass());
-            pstm.setBoolean(3, tk.isVaitro());
-            pstm.setInt(4, tk.getId());
+            pstm.setString(3, tk.getMaTK());
+            pstm.setString(1, tk.getPass());
+            pstm.setBoolean(2, tk.isVaitro());
             row = pstm.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return row;
     }

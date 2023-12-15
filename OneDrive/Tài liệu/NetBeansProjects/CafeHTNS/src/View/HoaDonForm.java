@@ -5,23 +5,19 @@
 package View;
 
 import Model.HoaDon;
-import Model.HoaDonCT;
 import Service.HoaDonCTService;
 import Service.HoaDonService;
 import UTILS.Auth;
-import com.itextpdf.text.Document;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,8 +52,8 @@ public class HoaDonForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         loadData();
         loadData1();
-        Sorting();
         setTime();
+        HoaDonForm frame = new HoaDonForm();
     }
 
     public void setTime() {
@@ -86,6 +82,7 @@ public class HoaDonForm extends javax.swing.JFrame {
             }
         }).start();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,8 +127,6 @@ public class HoaDonForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtTimKiemtheoMahd = new javax.swing.JTextField();
         btnTimKIEM = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        cboSapxep = new javax.swing.JComboBox<>();
         btnReset = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtmahd2 = new javax.swing.JTextField();
@@ -326,10 +321,6 @@ public class HoaDonForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Sắp xếp");
-
-        cboSapxep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tổng tiền", "Mã HD" }));
-
         btnReset.setText("Làm mới");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -460,15 +451,10 @@ public class HoaDonForm extends javax.swing.JFrame {
                                         .addGap(41, 41, 41)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButton1)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(txtTimKiemtheoMahd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                    .addComponent(jLabel4)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(cboSapxep, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtTimKiemtheoMahd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(221, 221, 221)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -506,11 +492,7 @@ public class HoaDonForm extends javax.swing.JFrame {
                                     .addComponent(txtTimKiemtheoMahd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnTimKIEM))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel4)
-                                        .addComponent(cboSapxep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -591,7 +573,7 @@ public class HoaDonForm extends javax.swing.JFrame {
         if (chon == JOptionPane.YES_OPTION) {
             try {
                 //                HoaDon hdcts = getInputForm();
-                if (hdcts.getAllHoaDonCT()!=null&&hdcts.deleteByMaSP(txtMaSP.getText()) != null ) {
+                if (hdcts.getAllHoaDonCT() != null && hdcts.deleteByMaSP(txtMaSP.getText()) != null) {
                     JOptionPane.showMessageDialog(this, "Xóa thành công");
                     loadData1();
                 } else {
@@ -617,11 +599,6 @@ public class HoaDonForm extends javax.swing.JFrame {
         clearForm();
     }//GEN-LAST:event_btnResetActionPerformed
 
-    private void btnTimKIEMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKIEMActionPerformed
-        // TODO add your handling code here:
-        timkiem();
-    }//GEN-LAST:event_btnTimKIEMActionPerformed
-
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         arr = hds.getAllHoaDon();
         try {
@@ -635,7 +612,6 @@ public class HoaDonForm extends javax.swing.JFrame {
 
             //            cell = row.createCell(1, CellType.STRING);
             //            cell.setCellValue("MaHDCT");
-
             cell = row.createCell(1, CellType.STRING);
             cell.setCellValue("Tổng Tiền");
 
@@ -656,10 +632,8 @@ public class HoaDonForm extends javax.swing.JFrame {
 
                 //                cell = row.createCell(1, CellType.STRING);
                 //                cell.setCellValue(arr.get(i).getMaHDCT());
-
                 //                cell = row.createCell(2, CellType.STRING);
                 //                cell.setCellValue(arr.get(i).getTenSp());
-
                 cell = row.createCell(1, CellType.STRING);
                 cell.setCellValue(arr.get(i).getTongtien());
 
@@ -670,11 +644,11 @@ public class HoaDonForm extends javax.swing.JFrame {
             }
 
             //                for(int i = 0; i < arrct.size(); i++){
-                //                    row = sheet.createRow(4 + i);
-                //
-                //
-                //                }
-            File f = new File("\\Users\\sang\\OneDrive\\Tài liệu\\NetBeansProjects\\HTNS\\DSHoaDon\\dshoahoa.xlsx");
+            //                    row = sheet.createRow(4 + i);
+            //
+            //
+            //                }
+            File f = new File("\\Users\\sang\\OneDrive\\Tài liệu\\NetBeansProjects\\CafeHTNS\\DSHoaDon\\dshoadon.xlsx");
             try {
                 FileOutputStream fos = new FileOutputStream(f);
                 workbook.write(fos);
@@ -689,97 +663,97 @@ public class HoaDonForm extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Lỗi lưu file");
         }
-        }
+    }
 
-        private void sanpham(int index) {
-            if (Auth.isLogin()) {
-                if (index == 1 && !Auth.isManager()) {
-                    JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
-                } else {
-                    new SanPhamForm().setVisible(true);
-                    this.dispose();
-                }
+    private void sanpham(int index) {
+        if (Auth.isLogin()) {
+            if (index == 1 && !Auth.isManager()) {
+                JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
             } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
+                new SanPhamForm().setVisible(true);
+                this.dispose();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
         }
+    }
 
-        private void nhanvien(int index) {
-            if (Auth.isLogin()) {
-                if (index == 1 && !Auth.isManager()) {
-                    JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
-                } else {
-                    new NhanVienForm().setVisible(true);
-                    this.dispose();
-                }
+    private void nhanvien(int index) {
+        if (Auth.isLogin()) {
+            if (index == 1 && !Auth.isManager()) {
+                JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
             } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
+                new NhanVienForm().setVisible(true);
+                this.dispose();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
         }
+    }
 
-        private void hoadon(int index) {
-            if (Auth.isLogin()) {
-                if (index == 1 && !Auth.isManager()) {
-                    JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
-                } else {
-                    new HoaDonForm().setVisible(true);
-                    this.dispose();
-                }
+    private void hoadon(int index) {
+        if (Auth.isLogin()) {
+            if (index == 1 && !Auth.isManager()) {
+                JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
             } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
+                new HoaDonForm().setVisible(true);
+                this.dispose();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
         }
+    }
 
-        private void taikhoan(int index) {
-            if (Auth.isLogin()) {
-                if (index == 1 && !Auth.isManager()) {
-                    JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
-                } else {
-                    new TaiKhoanForm().setVisible(true);
-                    this.dispose();
-                }
+    private void taikhoan(int index) {
+        if (Auth.isLogin()) {
+            if (index == 1 && !Auth.isManager()) {
+                JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
             } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
+                new TaiKhoanForm().setVisible(true);
+                this.dispose();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
         }
+    }
 
-        private void thongke(int index) {
-            if (Auth.isLogin()) {
-                if (index == 1 && !Auth.isManager()) {
-                    JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
-                } else {
-                    new ThongKeForm().setVisible(true);
-                    this.dispose();
-                }
+    private void thongke(int index) {
+        if (Auth.isLogin()) {
+            if (index == 1 && !Auth.isManager()) {
+                JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
             } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
+                new ThongKeForm().setVisible(true);
+                this.dispose();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
         }
+    }
 
-        private void giamgia(int index) {
-            if (Auth.isLogin()) {
-                if (index == 1 && !Auth.isManager()) {
-                    JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
-                } else {
-                    new GiamGiaForm().setVisible(true);
-                    this.dispose();
-                }
+    private void giamgia(int index) {
+        if (Auth.isLogin()) {
+            if (index == 1 && !Auth.isManager()) {
+                JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
             } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
+                new GiamGiaForm().setVisible(true);
+                this.dispose();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
         }
+    }
 
-        private void banhang(int index) {
-            if (Auth.isLogin()) {
-                if (index == 1 && !Auth.isManager()) {
-                    JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
-                } else {
-                    new BanHangForm().setVisible(true);
-                    this.dispose();
-                }
+    private void banhang(int index) {
+        if (Auth.isLogin()) {
+            if (index == 1 && !Auth.isManager()) {
+                JOptionPane.showMessageDialog(null, "Bạn không phải là Quản Lý");
             } else {
-                JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
+                new BanHangForm().setVisible(true);
+                this.dispose();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Vui lòng đăng nhập");
+        }
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
@@ -835,7 +809,7 @@ public class HoaDonForm extends javax.swing.JFrame {
         int chon = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn xóa?", "Xóa", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if (chon == JOptionPane.YES_OPTION) {
             try {
-                if (hds.deleteHoaDon(txtMaHD.getText()) != null ) {
+                if (hds.deleteHoaDon(txtMaHD.getText()) != null) {
                     JOptionPane.showMessageDialog(this, "Xóa thành công");
                     loadData();
                 } else {
@@ -846,6 +820,11 @@ public class HoaDonForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnTimKIEMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKIEMActionPerformed
+        // TODO add your handling code here:
+        timkiem();
+    }//GEN-LAST:event_btnTimKIEMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1406,7 +1385,6 @@ public class HoaDonForm extends javax.swing.JFrame {
     private javax.swing.JButton btnnhanvien;
     private javax.swing.JButton btnsanpham;
     private javax.swing.JButton btnthongke;
-    private javax.swing.JComboBox<String> cboSapxep;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -1419,7 +1397,6 @@ public class HoaDonForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1487,6 +1464,7 @@ public class HoaDonForm extends javax.swing.JFrame {
         }
 
     }
+
     private void loadData1() {
         model = (DefaultTableModel) tblHoaDonCT.getModel();
         model.setRowCount(0);
@@ -1538,6 +1516,7 @@ public class HoaDonForm extends javax.swing.JFrame {
         for (HoaDon hd : arr) {
             mol.addRow(new Object[]{
                 hd.getMaHD(),
+                hd.getMaNV(),
                 hd.getTongtien(),
                 hd.getNgayxuatxu()
             });
@@ -1552,29 +1531,12 @@ public class HoaDonForm extends javax.swing.JFrame {
         for (HoaDon hd : arr) {
             mol.addRow(new Object[]{
                 hd.getMaHD(),
+                hd.getMaNV(),
                 hd.getTongtien(),
                 hd.getNgayxuatxu()
             });
         }
 
-    }
-
-    private void Sorting() {
-        ArrayList<HoaDon> list = new ArrayList<>();
-        cboSapxep.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedOption = (String) cboSapxep.getSelectedItem();
-                if ("Mã HD".equals(selectedOption)) {
-                    sapxeptheoMaHD();
-                }
-                if ("Tổng tiền".equals(selectedOption)) {
-                    sapxeptheoTongTien();
-                }
-
-                // Update the table with sorted data
-            }
-        });
     }
 
     public void clearForm() {
@@ -1590,27 +1552,6 @@ public class HoaDonForm extends javax.swing.JFrame {
         txtGia.setText("");
         txtSoLuong.setText("");
         loadData1();
-    }
-
-    private HoaDon getInputForm() {
-        HoaDon hd = new HoaDon();
-        hd.setMaHD(txtMaHD.getText());
-        hd.setMaHDCT(txtMaHDCT.getText());
-        hd.setMaNV(txtMaSP.getText());
-//        hd.setTongtien(Double.parseDouble(txtTongTien.getText()));
-//        try {
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//            Date ngayXuat = dateFormat.parse(txtNgayxuat.getText());
-//            java.sql.Date ngayxuatSql = new java.sql.Date(ngayXuat.getTime());
-//            hd.setNgayxuatxu(ngayxuatSql);
-//        } catch (ParseException e) {
-//            e.printStackTrace(); // Handle the parsing exception appropriately
-//        }
-        hd.setTenSp(txtSoLuong.getText());
-        hd.setMaSP(txtTenSP.getText());
-        hd.setSoluong(Integer.parseInt(txtGia.getText()));
-        hd.setGia(Double.parseDouble(txtGia.getText()));
-        return hd;
     }
 
     private void showDetail() {

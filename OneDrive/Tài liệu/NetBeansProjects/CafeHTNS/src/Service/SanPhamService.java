@@ -29,7 +29,7 @@ public class SanPhamService {
                 SanPham sp = new SanPham();
                 sp.setMaSP(rs.getString("maSP"));
                 sp.setTenSP(rs.getString("tenSP"));
-                sp.setLoai(rs.getString("loai"));
+                sp.setLoai(rs.getBoolean("loai"));
                 sp.setGia(rs.getDouble("giaGoc"));
                 sp.setHinh(rs.getString("hinh"));
                 sp.setSoLuong(rs.getInt("soLuong"));
@@ -51,7 +51,7 @@ public class SanPhamService {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(1, sp.getMaSP());
             pstm.setString(2, sp.getTenSP());
-            pstm.setString(3, sp.getLoai());
+            pstm.setBoolean(3, sp.isLoai());
             pstm.setDouble(4, sp.getGia());
             pstm.setString(5, sp.getHinh());
             pstm.setInt(6, sp.getSoLuong());
@@ -72,7 +72,7 @@ public class SanPhamService {
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setString(6, sp.getMaSP());
             pstm.setString(1, sp.getTenSP());
-            pstm.setString(2, sp.getLoai());
+            pstm.setBoolean(2, sp.isLoai());
             pstm.setDouble(3, sp.getGia());
             pstm.setString(4, sp.getHinh());
             pstm.setInt(5, sp.getSoLuong());
@@ -111,7 +111,7 @@ public class SanPhamService {
                 SanPham sp = new SanPham();
                 sp.setMaSP(rs.getString("maSP"));
                 sp.setTenSP(rs.getString("tenSP"));
-                sp.setLoai(rs.getString("loai"));
+                sp.setLoai(rs.getBoolean("loai"));
                 sp.setGia(rs.getDouble("giaGoc"));
                 sp.setHinh(rs.getString("hinh"));
                 sp.setSoLuong(rs.getInt("soLuong"));
@@ -127,7 +127,7 @@ public class SanPhamService {
         SanPham sp = new SanPham();
         sp.setMaSP(rs.getString("maSP"));
         sp.setTenSP(rs.getString("tenSP"));
-        sp.setLoai(rs.getString("loai"));
+        sp.setLoai(rs.getBoolean("loai"));
         sp.setGia(rs.getDouble("giaGoc"));
         sp.setHinh(rs.getString("hinh"));
         sp.setSoLuong(rs.getInt("soLuong"));

@@ -12,12 +12,12 @@ public class ThongKe {
     private String maTk;
     private String maHD;
     private String ngayTk;
-    private float luong;
+    private double luong;
 
     public ThongKe() {
     }
 
-    public ThongKe(String maTk, String maHD, String ngayTk, float luong) {
+    public ThongKe(String maTk, String maHD, String ngayTk, double luong) {
         this.maTk = maTk;
         this.maHD = maHD;
         this.ngayTk = ngayTk;
@@ -48,11 +48,11 @@ public class ThongKe {
         this.ngayTk = ngayTk;
     }
 
-    public float getLuong() {
+    public double getLuong() {
         return luong;
     }
 
-    public void setLuong(float luong) {
+    public void setLuong(double luong) {
         this.luong = luong;
     }
     
